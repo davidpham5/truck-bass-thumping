@@ -6,4 +6,4 @@ description: "Stand by to be forwarded"
 layout: "fwd.njk"
 ---
 
-Redirect to [Song Obsessed Tags](/artists/).
+Redirect to [Truck Bass Thumping Tags](/artists/).

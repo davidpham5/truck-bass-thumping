@@ -39,6 +39,9 @@ module.exports = async function (data, zones) {
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="preload" as="style" href="/assets/fraunces/fraunces.css" />
 		<title>${data.title || data.site.title}</title>
 		<meta name="description" content="${meta_description}" />
@@ -64,18 +67,18 @@ module.exports = async function (data, zones) {
 		${zones.earlyHead || ""}
 		<link rel="stylesheet" href="/assets/css/style.css"  hx-preserve="true">
 		<script src="/assets/js/htmx.min.js" type="application/javascript" hx-preserve="true"></script>
+		<script src="/assets/js/theme-picker.js" type="application/javascript" hx-preserve="true"></script>
 		<script src="https://www.youtube.com/iframe_api" async onload="(function(){var event = new Event('ytapi-ready'); document.dispatchEvent(event);})()" hx-preserve="true"></script>
 		<script src="https://open.spotify.com/embed/iframe-api/v1" async onload="(function(){
-			var event = new Event('spotify-api-ready'); 
+			var event = new Event('spotify-api-ready');
 			document.dispatchEvent(event);
 		})()" hx-preserve="true"></script>
 		<script src="/assets/js/script.js" defer type="application/javascript" hx-preserve="true"></script>
+		<script src="/assets/js/theme-picker.js" defer type="application/javascript" hx-preserve="true"></script>
 		<script src="/assets/js/head-support.js" defer type="application/javascript" hx-preserve="true"></script>
 		<script src="/assets/js/script.js" defer type="application/javascript" hx-preserve="true"></script>
 		<script src="/service-worker.js" defer type="application/javascript" hx-preserve="true"></script>
-		<script defer data-domain="songobsessed.com" src="https://plausible.io/js/script.js" type="application/javascript"  hx-preserve="true"></script>
-
-		<!-- Favicon Meta -->
+		<script defer data-domain="songobsessed.com" src="https://plausible.io/js/script.js" type="application/javascript"  hx-preserve="true"></script>		<!-- Favicon Meta -->
 		<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -84,8 +87,8 @@ module.exports = async function (data, zones) {
 		<meta name="theme-color" content="#1f1836">
 
 		<link rel="canonical" href="${process.env.DOMAIN}${data.page.url}" />
-		<link rel="alternate" type="application/rss+xml" 
-			title="RSS Feed for ${process.env.DOMAIN}" 
+		<link rel="alternate" type="application/rss+xml"
+			title="RSS Feed for ${process.env.DOMAIN}"
 			href="/rss/index.xml" />
 		${templateStyle}
 		${zones.lateHead || ""}
@@ -99,7 +102,7 @@ module.exports = async function (data, zones) {
 				</header>
 				<main class="wrapper" class="template-${zones.template}">
 					${zones.content}
-					
+
 				</main>
 			</div>
 			${footer(data)}

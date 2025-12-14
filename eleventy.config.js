@@ -28,7 +28,7 @@ let site = scheme + domain_name;
 
 process.env.DOMAIN = site;
 process.env.DOMAIN_NAME = domain_name;
-process.env.SITE_NAME = "Song Obsessed";
+process.env.SITE_NAME = "Truck Bass Thumping";
 process.env.DESCRIPTION = "Getting obsessed with songs, one at a time.";
 process.env.BASIC_IMAGE = `${domain_name}/img/nyc_noir.jpg`;
 process.env.PRIMARY_AUTHOR = "Aram Zucker-Scharff";

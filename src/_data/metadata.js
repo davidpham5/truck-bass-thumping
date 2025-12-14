@@ -1,9 +1,9 @@
 require("dotenv").config();
 
 let data = {
-	username: "Chronotope", // No leading @ here
-	homeLabel: "Song Obsessed",
-	homeUrl: "https://aramzs.github.io/",
+	username: "dpham5", // No leading @ here
+	homeLabel: "Truck Bass Thumping",
+	homeUrl: "https://davidchicopham/",
 	language: "en-US",
 };
 

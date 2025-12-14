@@ -1,8 +1,8 @@
 @use 'variables' as *
 
 body
-    color: #121212
-    background: #eee
+    color: var(--base-font-color)
+    background: var(--background-color)
     max-width: 100%
     display: block
 img
@@ -28,6 +28,8 @@ body
     -webkit-font-smoothing: antialiased
     background-color: var(--background-color)
     color: var(--base-font-color)
+    font-size: 18px
+    line-height: 1.65
 
 img, iframe
     border: none
@@ -38,7 +40,7 @@ a, a:visited, a:link
     text-decoration: underline
 
 a:hover
-    color: var(--light-highlight)
+    color: var(--link-hover)
     text-decoration: underline
 
 pre
@@ -62,28 +64,32 @@ hr
 // Headlines
 
 h1,h2,h3,h4,h5,h6
-    margin: 0.6em 0
-    font-weight: normal
+    margin: 0.8em 0 0.4em
+    font-weight: 600
+    font-family: var(--serif)
+    line-height: 1.3
+    color: var(--base-font-color)
 
 h1
-    font-size: 2.625em
+    font-size: 2.5em
     line-height: 1.2
+    font-weight: 700
 
 h2
-    font-size: 1.625em
-    line-height: 1.2
+    font-size: 2em
+    line-height: 1.25
 
 h3
-    font-size: 1.3125em
-    line-height: 1.24
+    font-size: 1.5em
+    line-height: 1.3
 
 h4
-    font-size: 1.1875em
-    line-height: 1.23
+    font-size: 1.25em
+    line-height: 1.35
 
 h5,h6
-    font-size: 1em
-    font-weight: bold
+    font-size: 1.1em
+    font-weight: 600
 
 // Table
 
@@ -139,7 +145,7 @@ footer
 
 #inner-body
     margin-bottom: 500px
-    padding-top: 65px
+    padding-top: 80px
 
 .xp-min #inner-body
     margin-bottom: 250px

@@ -159,7 +159,7 @@ whole.forEach(async (track) => {
 				{
 					headers: {
 						"User-Agent":
-							"Song Obsessed/1.0 ( http://aramzs.github.io )",
+							"Truck Bass Thumping/1.0 ( http://aramzs.github.io )",
 					},
 				}
 			)
@@ -189,7 +189,7 @@ whole.forEach(async (track) => {
 				{
 					headers: {
 						"User-Agent":
-							"Song Obsessed/1.0 ( http://aramzs.github.io )",
+							"Truck Bass Thumping/1.0 ( http://aramzs.github.io )",
 					},
 				}
 			)
@@ -210,7 +210,7 @@ whole.forEach(async (track) => {
 				fetch(lastFMData.track.url, {
 					headers: {
 						"User-Agent":
-							"Song Obsessed/1.0 ( http://aramzs.github.io )",
+							"Truck Bass Thumping/1.0 ( http://aramzs.github.io )",
 					},
 				})
 					.then((response) => response.text())
@@ -328,7 +328,7 @@ whole.forEach(async (track) => {
 				let imageBlob = await fetch(aUrl, {
 					headers: {
 						"User-Agent":
-							"Song Obsessed/1.0 ( http://aramzs.github.io )",
+							"Truck Bass Thumping/1.0 ( http://aramzs.github.io )",
 					},
 				});
 				let imageReady = await imageBlob.blob();

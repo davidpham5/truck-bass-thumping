@@ -1,0 +1,236 @@
+html.theme-neon,
+.theme-picker li.theme-neon
+    --background: #03092b
+    --background-muted: #182361
+    --foreground: #38cbb9
+    --foreground-muted: #00d686
+    --accent: #f89697
+    --jumbo-nav-background-color: #832e1c
+    --jumbo-nav-text-color: white
+    --jumbo-nav-accent-color: #eaf0e5
+    --jumbo-nav-anchor-color: #e4ecdf
+    --jumbo-nav-anchor-hover-color: #ff353f
+    --dark-highlight: #f89697
+    --dark-highlight-accent: #93161d
+    --light-highlight: #93161d
+    --light-highlight-accent: #03092b
+
+html.theme-dark,
+.theme-picker li.theme-dark
+    --background: #18181c
+    --background-muted: #494f5c
+    --foreground: #ff2eff
+    --foreground-muted: #a5a1a3
+    --accent: #fbc367
+    --jumbo-nav-background-color: #001d21
+    --jumbo-nav-text-color: white
+    --jumbo-nav-accent-color: rgb(205 203 255)
+    --jumbo-nav-anchor-color: rgb(205 203 255)
+    --jumbo-nav-anchor-hover-color: #ff353f
+    --dark-highlight: #494f5c
+    --dark-highlight-accent: #ff2eff
+    --light-highlight: #ff2eff
+    --light-highlight-accent: #18181c
+    --link-color: #7d177dff
+    --link-hover: #550055ff
+
+html.theme-camel-sands,
+.theme-picker li.theme-camel-sands
+    --background: #f5e4bc
+    --background-muted: #ecc979
+    --foreground: #292823
+    --foreground-muted: #19264b
+    --accent: #ff353f
+    --jumbo-nav-background-color: #45312b
+    --jumbo-nav-accent-color: var(--background-muted)
+    --jumbo-nav-anchor-color: var(--background-muted)
+    --jumbo-nav-anchor-hover-color: var(--accent)
+    #xplayer-currently
+        color: var(--foreground)
+        background-color: var(--background-muted)
+    #main-content #brief
+        background: var(--background-muted)
+        color: var(--foreground)
+        .genre-tag
+            a
+                color: var(--background)
+
+html.theme-corn-flower,
+.theme-picker li.theme-corn-flower
+    --background: #f3fbfe
+    --background-muted: #dfecf1
+    --foreground: #232323
+    --foreground-muted: #384043
+    --accent: #7754b0
+    --accent-muted: #351249
+    --jumbo-nav-background-color: #0b0026
+
+html.theme-chocolate-thunda,
+.theme-picker li.theme-chocolate-thunda
+    --background: #34252f
+    --background-muted: #3b5249
+    --foreground: #bec5ad
+    --foreground-muted: #a4b494
+    --accent: #519872
+
+html.theme-coffee,
+.theme-picker li.theme-coffee
+    --background: #54311a
+    --background-muted: #844f39
+    --foreground: #f5e7de
+    --foreground-muted: #fbc367
+    --accent: #ffb079
+    --jumbo-nav-background-color: #2b190d
+    --jumbo-nav-accent-color: var(--accent)
+    --jumbo-nav-anchor-color: var(--accent)
+
+html.theme-summer,
+.theme-picker li.theme-summer
+    --background: #f6f7eb
+    --background-muted: #dde3be
+    --foreground: #34435e
+    --foreground-muted: #b57f50
+    --accent: #ff6392
+    --accent-muted: #ff3561
+
+html.theme-blush,
+.theme-picker li.theme-blush
+    --background: #eddad1
+    --background-muted: #edc8b7
+    --foreground: #113d6a
+    --foreground-muted: #bab1b5
+    --accent: #ab3c61
+    --accent-muted: #3f0f17
+
+html.theme-blue,
+.theme-picker li.theme-blue
+    --background: #234e70
+    --background-muted: #426682
+    --foreground: #fbf8be
+    --foreground-muted: #bdc5ad
+    --accent: #fbbc55
+    --accent-muted: #ff9f1c
+
+html.theme-ftl,
+.theme-picker li.theme-ftl
+    --background: #01021EFF
+    --background-muted: #00305b
+    --foreground: #fbf8be
+    --foreground-muted: #bdc5ad
+    --accent: #0f89a7
+    --accent-muted: #10b4d8
+    --jumbo-nav-background-color: #832e1c
+    --jumbo-nav-text-color: white
+    --jumbo-nav-accent-color: #eaf0e5
+    --jumbo-nav-anchor-color: #e4ecdf
+    --jumbo-nav-anchor-hover-color: #ff353f
+    --dark-highlight: #0f89a7
+    --dark-highlight-accent: #01021E
+    --light-highlight: #10b4d8
+    --light-highlight-accent: #01021E
+    #main-content #song-availability img.active-playertype
+        background: var(--accent-muted)
+    #main-content #brief
+        background: #fff52f
+        color: var(--background-muted)
+        border-radius: 6px
+        .genre-tag
+            background: var(--light-highlight-overlap)
+            a
+                color: var(--background-muted)
+
+.theme-picker
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+    font-size: 0.875rem
+    background-color: var(--background-muted)
+    box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%)
+    height: 0
+    overflow: hidden
+    position: relative
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1)
+
+    &.is-open
+        height: 11rem
+
+    h1
+        font-size: 1.4em
+        text-align: center
+        margin-bottom: 0
+
+    nav
+        position: relative
+        z-index: 2
+        width: 100%
+        overflow-y: hidden
+        scroll-behavior: smooth
+
+    ul
+        display: flex
+        flex-direction: row
+        list-style: none
+        margin: 0
+        padding: 1em 40px 2em
+        white-space: nowrap
+        overflow-y: hidden
+        overflow-x: auto
+        text-align: center
+        width: 100%
+
+    li
+        border-radius: 0.4em
+        min-width: 140px
+        transform: scale(1)
+        transition: transform 0.2s
+
+        &:hover
+            box-shadow: 0 0 8px var(--foreground)
+            transform: scale(1.05)
+
+        &.current
+            box-shadow: 0 0 0 2px var(--accent)
+
+        & + li
+            margin-left: 1rem
+
+        button
+            background-color: var(--background)
+            color: var(--foreground)
+            border: none
+            border-radius: 0.4em
+            padding: 1em
+            font-size: 0.9em
+            width: 100%
+            cursor: pointer
+
+    .swatches
+        margin-top: 0.5em
+        display: block
+
+        span
+            display: inline-block
+            width: 22px
+            height: 22px
+            border-radius: 100%
+            background-color: black
+            border: 2px solid white
+
+            & + span
+                margin-left: -0.995em
+
+            &.background
+                background-color: var(--background)
+
+            &.background-muted
+                background-color: var(--background-muted)
+
+            &.foreground
+                background-color: var(--foreground)
+
+            &.foreground-muted
+                background-color: var(--foreground-muted)
+
+            &.accent
+                background-color: var(--accent)

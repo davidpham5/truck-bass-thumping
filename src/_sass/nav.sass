@@ -9,48 +9,47 @@ nav, nav h1
         padding: 0
 
 nav h1:first-of-type
-        clip-path: polygon(0 0, 101% 0, 97% 100%, 0 85%)
+        clip-path: none
 
 nav h1
         padding: 0.35em
 
 nav h1 a, nav h1 a:hover, nav h1 a:visited
-        color: var(--accent-overlap)!important
+        color: var(--base-font-color)!important
 
 nav > a, nav > #nav-menu-items >  ul > li > a
-        padding: 0.25em
-        margin-left: 12px
+        padding: 0.5em 0.75em
+        margin-left: 8px
 
 nav > a:nth-of-type(odd), nav > #nav-menu-items > ul > li > a:nth-of-type(odd)
-        clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0% 20%)
+        clip-path: none
 
 nav > a:nth-of-type(even), nav > #nav-menu-items > ul > li > a:nth-of-type(even)
-        clip-path: polygon(0 0, 100% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 100%, 0% 20%)
+        clip-path: none
 
 nav h1, nav h1 a, nav > a:link, nav h1 a:visited, nav > a:visited, nav > #nav-menu-items > ul > li > a:link, nav h1 a:visited, nav > #nav-menu-items > ul > li > a:visited
-        color: var(--accent-overlap)
-        text-decoration: underline
-        text-decoration-color: var(--med-highlight)
+        color: var(--base-font-color)
+        text-decoration: none
         font-weight: 500
-        background-color: var(--base-font-color)
+        background-color: transparent
 
 nav h1:hover, nav h1 a:hover, nav > a:hover, nav > #nav-menu-items > ul > li > a:hover
-        color: var(--accent-overlap)
-        text-decoration: underline
-        text-decoration-color: var(--base-font-color)
-        background-color: var(--link-color)
+        color: var(--link-color)
+        text-decoration: none
+        background-color: transparent
 
 nav
-    border-bottom: 3px solid var(--accent)
-    padding: 0 10px
+    border-bottom: 1px solid var(--border-light)
+    padding: 0 20px
     width: 100%
     position: fixed
-    background-color: var(--back-fill)
-    height: 46px
+    background-color: var(--background-color)
+    height: 60px
     z-index: 100
     top: 0
     left: 0
-    overflow: hidden
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05)
     ul
         display: inline-block
         margin-left: 12px
@@ -60,10 +59,10 @@ nav
             &
                 margin-top: 12px
         &:not(:last-of-type)::after
-            content: " "
+            content: ""
             padding: 0 4px
             text-decoration: none
-            color: var(--dark-highlight)
+            color: var(--base-font-color-light)
             display: inline-block
             @media (max-width: variables.$large-mobile)
                 &
@@ -74,11 +73,11 @@ nav
             height: auto
             padding-bottom: 10px
             #top-nav-inner
-                background-color: var(--back-fill)
+                background-color: var(--background-color)
                 height: auto
 
 nav h1, #nav-menu-items
-                margin-top: 8px
+                margin-top: 12px
                 margin-right: 0
 
 nav h1
@@ -174,3 +173,6 @@ input:checked + .slider:before
     z-index: 20
     color: var(--accent-overlap)
     text-shadow: -2px -2px 2px white, 2px 2px 2px white, 0px 2px 2px white, 2px 0px 2px white, 0px 0px 10px white, 0px 0px 8px white, 0px 0px 6px white
+
+#nav-open.theme-picker-open
+    visibility: visible

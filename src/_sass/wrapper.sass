@@ -1,51 +1,65 @@
 
 .wrapper
-    padding: 10px
     margin: 0 auto
+    max-width: 900px
+    display: flex
+    flex-direction: column
     @media (max-width: 500px)
         margin: 0 auto
-        padding: 10px 5px
+        padding: 15px 10px
     p
-        font-size: 19.2px
-        letter-spacing: -0.32px
-        line-height: 1.58em
-        margin-bottom: 1em
+        font-size: 18px
+        line-height: 1.65
+        margin-bottom: 1.5em
     h2
-        font-size: 2.5em
-        margin-top: .8em
-        margin-bottom: .8em
-        font-family: 'Fraunces', serif
+        font-size: 2em
+        margin-top: 1.5em
+        margin-bottom: 0.5em
+        font-family: var(--serif)
         font-weight: 600
     h3
-        font-size: 2em
-        margin-top: .8em
-        margin-bottom: .8em
-        font-weight: 600
-    h4
         font-size: 1.5em
-        margin-top: .8em
-        margin-bottom: .8em
+        margin-top: 1.2em
+        margin-bottom: 0.5em
         font-weight: 600
+        font-family: var(--serif)
+    h4
+        font-size: 1.25em
+        margin-top: 1em
+        margin-bottom: 0.5em
+        font-weight: 600
+        font-family: var(--serif)
     h5
-        font-size: 1.2em
-        margin-top: .8em
-        margin-bottom: .8em
+        font-size: 1.1em
+        margin-top: 1em
+        margin-bottom: 0.5em
         font-weight: 600
     h6
         font-size: 1em
-        margin-top: .8em
-        margin-bottom: .8em
+        margin-top: 0.8em
+        margin-bottom: 0.5em
         font-weight: 600
     button
-        background: var(--med-highlight)
-        color: var(--dark-highlight-overlap)
+        background: var(--accent)
+        color: var(--background-color)
+        border: 1px solid var(--accent)
+        padding: 10px 20px
+        border-radius: 6px
+        transition: all 0.2s ease
+        font-weight: 500
+        &:hover
+            background: var(--dark-highlight)
+            border-color: var(--dark-highlight)
     button.selected
-        background: var(--dark-highlight-accent)
+        background: var(--dark-highlight)
+        border-color: var(--dark-highlight)
     .date-added, .top-note
         font-style: italic
-        color: var(--accent)
-        background-color: #141414
-        padding: 6px
+        color: var(--base-font-color-light)
+        background-color: var(--back-fill)
+        padding: 10px 15px
+        border-radius: 6px
+        border-left: 3px solid var(--accent)
     .anchor
         background: var(--link-color)
         display: inline-block
@@ -65,16 +79,21 @@
         .obsession-entry
             display: grid
             grid-template-columns: repeat(6, 1fr)
-            gap: 10px
+            gap: 15px
             grid-auto-rows: minmax(100px, auto)
-            max-width: 500px
+            max-width: 600px
             margin: 0 auto
-            background: var(--dark-highlight)
-            padding: 10px
-            border-radius: 10px
+            background: var(--card-background)
+            padding: 20px
+            border-radius: 12px
             align-content: center
             justify-content: center
             align-items: center
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08)
+            border: 1px solid var(--border-light)
+            transition: all 0.2s ease
+            &:hover
+                box-shadow: 0 4px 12px rgba(0,0,0,0.12)
             .obsession-image
                 grid-column: 1 / span 2
                 grid-row: 1 / span 1
@@ -83,16 +102,16 @@
                     display: block
                     width: inherit
                     height: inherit
+                    border-radius: 8px
             .song-text
                 grid-column: 3 / span 4
                 grid-row: 1 / span 1
                 font-size: 24px
                 font-weight: 600
-                font-family: "Fraunces",serif
-                font-variation-settings: "SOFT" 0, "WONK" 1
+                font-family: var(--serif)
                 span
                     font-size: 28px
-                    font-weight: 800
+                    font-weight: 700
                     color: var(--base-font-color)
                 a, a:hover, a:visited
                     text-decoration-color: var(--accent)
@@ -100,29 +119,38 @@
     height: 50px
 
 #searchbox
-    margin-top: 10px
+    margin-top: 20px
     display: grid
     grid-template-columns: repeat(3, 1fr)
-    gap: 10px
+    gap: 20px
     grid-auto-rows: minmax(100px, auto)
     @media (max-width: 832px)
         grid-template-columns: repeat(2, 1fr)
         grid-auto-rows: minmax(100px, auto)
     li
-        font-size: 1.1em
+        font-size: 1.05em
         list-style: none
         align-content: center
-        padding: 20px
-        border-radius: 20px
-        background: var(--dark-highlight)
+        padding: 25px
+        border-radius: 12px
+        background: var(--card-background)
+        border: 1px solid var(--border-light)
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08)
         grid-column: span 1
         grid-row: span 1
+        transition: all 0.2s ease
+        &:hover
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12)
+            transform: translateY(-2px)
         .post-result-main-title
-            font-size: 1.1em
-            font-family: 'Fraunces', serif
+            font-size: 1.15em
+            font-family: var(--serif)
             font-weight: 600
             margin-bottom: 0.5em
+            color: var(--base-font-color)
         .search-field-name
             font-style: italic
+            color: var(--base-font-color-light)
         .post-result-album-title
             font-weight: 600
+            color: var(--base-font-color)

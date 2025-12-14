@@ -10,10 +10,10 @@ let randomVer = () => {
 };
 
 let data = {
-	username: "Chronotope", // No leading @ here
+	username: "dpham5", // No leading @ here
 	title: process.env.SITE_NAME,
 	description: process.env.DESCRIPTION,
-	homeUrl: "https://aramzs.github.io/",
+	homeUrl: "https://davidchicopham.com/",
 	language: "en-US",
 	metadata: {
 		...metadata,

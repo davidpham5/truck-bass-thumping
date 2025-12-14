@@ -2,7 +2,7 @@
 
 .pagination-block
     width: 60%
-    margin: 10px auto
+    margin: 30px auto
     text-align: center
     align-content: center
     @media print, screen and (max-width: $mobile-width)
@@ -19,23 +19,26 @@
         text-align: center
         width: 130px
         background-color: var(--accent)
-        color: var(--accent-overlap)
+        color: var(--background-color)
+        padding: 10px 20px
+        border-radius: 6px
+        transition: all 0.2s ease
         &.disabled-link
             background: var(--accent-transparent)
             cursor: not-allowed
             visibility: hidden
         &:hover:not(.disabled-link)
-            background: lightblue
-            color: black
+            background: var(--dark-highlight)
+            color: var(--background-color)
         &:hover.disabled-link
             color: rgba(0, 0, 0, .3)
         &:first-child
-            border-right: 0px solid black
+            border-right: 0px solid transparent
             margin-left: 10px
             float: left
-            box-shadow: -10px 5px 8px rgba(0, 0, 0, .5)
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1)
         &:last-child
-            border-left: 0px solid black
+            border-left: 0px solid transparent
             float: right
             margin-right: calc(25px + 10px)
-            box-shadow: 10px 5px 8px rgba(0, 0, 0, .5)
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1)

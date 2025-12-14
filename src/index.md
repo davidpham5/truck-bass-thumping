@@ -1,34 +1,36 @@
 ---
-title: "Song Obsessed"
-internalPageTypes: [ 'home' ]
+title: "Truck Bass Thumping"
+internalPageTypes: ["home"]
 path: /
 layout: "index.11ty.js"
 ---
 
-Welcome to <span class="site-name">Song Obsessed</span>. This is a site for me to share my favorite songs and write about them. Since early 2009 I've been using a variety of sites to keep track of one song a day, a week or a month. Sometimes I've written about them, sometimes not. But trying to find a way to retain that list and remember them over time has been a challenge. [First The61 closed](https://en.wikipedia.org/wiki/Thesixtyone). Then [ThisIsMyJam](https://www.theguardian.com/technology/2015/aug/10/this-is-my-jam-music-website-shuts-down-open-web). Now I use [Last.fm Obsessions](https://www.last.fm/user/Shade0/obsessions), but it doesn't work exactly how I'd like.
+Welcome to <span class="site-name">Truck Bass Thumping</span>. This is an attempt to create audio playlists that you all have been organizing your music life around into a song discovery engine. I call it This is My Next Engine.
 
-So this site will hopefully work and, even if it isn't the best option, I'm running it, so I won't lose those songs and I'll always have a stable place to share them with others. 
+The idea is pretty simple. Liberate your Spotify playlists in the form exporting them and combine your favorite friend's own playlists into an on-device LLM-powered song recommendation. Can a on-device LLM find similar charcateristics in songs from your friends' playlists and recommend your next song to listen to? This site is an experiment to find out.
+
+A key principle is that this site treats your data in a way that is interoparable with other services. Can playlists be a data type? can it be shared between services? Can I export my data and use it elsewhere? Can I import data from other services? This site is an experiment to find out.
 
 ## Select your preferred player
 
-The audio player on this site supports each of these player types. Not all songs may be available in your preferred player type. If it is only available in another player type then the player will use that type. YouTube is the default. 
+The audio player on this site supports each of these player types. Not all songs may be available in your preferred player type. If it is only available in another player type then the player will use that type. YouTube is the default.
 
 <button class="xp-pref-selector disabled" onclick=setPreferredAPI(this) data-pref="yt">YouTube</button> <button class="xp-pref-selector disabled" onclick=setPreferredAPI(this) data-pref="spotify">Spotify</button> <button class="xp-pref-selector disabled" onclick=setPreferredAPI(this) data-pref="native">Native</button>
-
 
 Heads up: This site assumes that if you click on a song, you want to listen to it. So it will start playing automatically or be added to your playlist. If you don't want that it to work like that, there's an autoplay switch in the top right.
 
 ## What is this site for?
 
-Right now <span class="site-name">Song Obsessed</span> serves two goals, a lab for me to experiment with technology where a single site owner like myself can leverage all the places audio and video can be hosted to create something a little like their own mixtape, one that's dependent on the variety of media hosting tools out there, but not on any single one of them, as a sort of hedge against something happening to any of them. 
+Right now <span class="site-name">Truck Bass Thumping</span> serves two goals, a lab for me to experiment with technology where a single site owner like myself can leverage all the places audio and video can be hosted to create something a little like their own mixtape, one that's dependent on the variety of media hosting tools out there, but not on any single one of them, as a sort of hedge against something happening to any of them.
 
-I say a mixtape, but it isn't quite a mixtape and it isn't quite a blog. It's something that I hope takes advantage of the best qualities of the web to share a listening experience that's a little curated and a little self-directed. 
+I say a mixtape, but it isn't quite a mixtape and it isn't quite a blog. It's something that I hope takes advantage of the best qualities of the web to share a listening experience that's a little curated and a little self-directed.
 
-There are three main technologies that back this. The site is generated with [11ty](https://www.11ty.dev/). The underlying technology behind how navigation through the site works is [HTMX](https://htmx.org/). The third is a piece of code I'm working on, not just for myself, but to make it easy for others to do the same things this site does. It's called XPlayer (as in HTMX Player). I'll have more about it later, I'm sure. 
+There are three main technologies that back this. The site is generated with [11ty](https://www.11ty.dev/). The underlying technology behind how navigation through the site works is [HTMX](https://htmx.org/). The third is a piece of code I'm working on, not just for myself, but to make it easy for others to do the same things this site does. It's called XPlayer (as in HTMX Player). I'll have more about it later, I'm sure.
 
-But the main thing this is for, is to share the songs I find interesting in a way that you can easily listen to them. So check those out! 
+But the main thing this is for, is to share the songs I find interesting in a way that you can easily listen to them. So check those out!
 
 ### [Songs](/songs/)
+
 <br />
 
 ~~[Aram](https://aramzs.github.io/aramzs/)
@@ -37,19 +39,19 @@ But the main thing this is for, is to share the songs I find interesting in a wa
 
 ## WiP
 
-This site is very much a work-in-progress and I'm hoping you'll give me feedback. Maybe you'll even be interested in participating, or using this technology for your own site. This site is entirely open-source (though not exactly clean and ready for contributors... yet). If you spot a bug, or maybe want me to check out a song, please [report it on GitHub](https://github.com/AramZS/songobsessed/issues). If you have some ideas for improving my code, please [submit a pull request](https://github.com/AramZS/songobsessed/pulls) and I'll make sure to credit you somewhere on this site! 
+This site is very much a work-in-progress and I'm hoping you'll give me feedback. Maybe you'll even be interested in participating, or using this technology for your own site. This site is entirely open-source (though not exactly clean and ready for contributors... yet). If you spot a bug, or maybe want me to check out a song, please [report it on GitHub](https://github.com/AramZS/songobsessed/issues). If you have some ideas for improving my code, please [submit a pull request](https://github.com/AramZS/songobsessed/pulls) and I'll make sure to credit you somewhere on this site!
 
-One day, I hope to make it easier for others to have their own playlists or mixtapes on this site as well. If you're interested, [let me know](https://indieweb.social/@Chronotope). I'll keep track and inform people where I have something ready. 
+One day, I hope to make it easier for others to have their own playlists or mixtapes on this site as well. If you're interested, [let me know](https://indieweb.social/@Chronotope). I'll keep track and inform people where I have something ready.
 
-Yeah, I know the console logs are excessive. Another thing on the list to fix, once I get the code working a little more smoothly. 
+Yeah, I know the console logs are excessive. Another thing on the list to fix, once I get the code working a little more smoothly.
 
 The V1 of this site incorporates feedback from reviewers: [Alex Petros](https://alexpetros.com/) and [Jordan Gass-Poore'](https://jgasspoore.com/). Thanks!
 
-You can read more about how this site was made [in my changelog reflections](/about). 
+You can read more about how this site was made [in my changelog reflections](/about).
 
-## Notes on content on this site 
+## Notes on content on this site
 
-Where I use images or audio files from other sites, they're used for the purpose of reviewing the audio and sometimes because there are simply no other options for sharing the audio. I will always try to link to the original source. If you'd like me to remove something, please [file an issue on GitHub](https://github.com/AramZS/songobsessed/issues). 
+Where I use images or audio files from other sites, they're used for the purpose of reviewing the audio and sometimes because there are simply no other options for sharing the audio. I will always try to link to the original source. If you'd like me to remove something, please [file an issue on GitHub](https://github.com/AramZS/songobsessed/issues).
 
 Most of the tags are generated by people other than myself. The rich metadata and album information that populates this site is mostly generated by [MusicBrainz](https://musicbrainz.org/), with a lot of help from [Last.fm](https://www.last.fm/user/Shade0) (which is an invaluable source for finding linked YouTube videos), and[--the current home of all my playlists--Spotify](https://open.spotify.com/user/aramzs?si=63564e012bdd4767).
 

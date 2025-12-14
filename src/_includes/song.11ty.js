@@ -155,37 +155,39 @@ module.exports = async function (data) {
 
 			<div id="song-image-wrapper">
 				<div id="song-image"><img src="${albumImage}" alt="${imageAlt}" /></div>
-			</div>			
+			</div>
 			<div id="song-availability" xp-playertypes>
 				<div class="availability-text">${
 					hasSongData ? "Play now" : "Media not available"
 				}</div>
-				
+
 				<img class="player-type ${ytStatus}" xp-playertype-play="yt" src="/img/icons8-youtube.svg" type="image/svg+xml" xp-playertype-status="${!!onPageObject
 			.media.youtubeId}" alt="YouTube logo"></img>
 
 				<img xp-playertype-play="spotify" class="player-type ${spotifyStatus}" xp-playertype-status="${!!onPageObject
 			.media
 			.spotifyUri}" src="/img/spotify.svg" type="image/svg+xml" alt="Spotify logo"></img>
-				
+
 				<img class="player-type ${nativeStatus}" xp-playertype-play="native" xp-playertype-status="${!!onPageObject
 			.media
 			.audiofile}" src="/img/html5-2.svg" type="image/svg+xml" alt="HTML5 logo for native player type"></img>
 			</div>
 		</div>
 		<div id="article-body">
-			<div id="brief">
-				<p>${data.description}</p>
-				<p>Artists: <span class="artist-list">${artistText.join(", ")}</span></p>
-				<p>Album: <span>${data.album}</span></p>
-				<p>Tags: <span>${tagText.join(" | ")}</span></p>
-				<p>${linksSet}</p>
-			</div>
+			<section class="main-song-content">
 			<p><span class="date-added">Added on: ${dateParts[0]} ${dateParts[1]} ${
 			dateParts[2]
 		} ${dateParts[3]}</span></p>
 			${playlistButtons}
 			${data.content}
+			</section>
+			<aside id="brief">
+				<p>${data.description}</p>
+				<p>Artists: <span class="artist-list">${artistText.join(", ")}</span></p>
+				<p>Album: <span>${data.album}</span></p>
+				<p>Tags: <span>${tagText.join(" ")}</span></p>
+				<p>${linksSet}</p>
+			</aside>
 			<br />
 			<script>
 				window.pageData = ${JSON.stringify(onPageObject)};
@@ -210,8 +212,8 @@ module.exports = async function (data) {
 			-->
 		</div>
 		${hasSongData ? xplayer(onPageObject) : ""}
-		<hr /> 
-			
+
+
 		`,
 	};
 	return base(data, insert);

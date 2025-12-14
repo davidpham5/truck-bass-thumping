@@ -1,0 +1,133 @@
+// Theme Picker Styles
+
+.theme-picker-container
+    position: relative
+    display: inline-block
+    float: right
+    margin-top: 12px
+    margin-right: 20px
+
+.theme-picker-button
+    background: transparent
+    border: 2px solid var(--border-light)
+    border-radius: 8px
+    padding: 8px 12px
+    cursor: pointer
+    font-size: 20px
+    line-height: 1
+    transition: all 0.2s ease
+    display: flex
+    align-items: center
+    justify-content: center
+    &:hover
+        background: var(--back-fill)
+        border-color: var(--accent)
+
+.theme-icon
+    display: block
+
+.theme-picker-dropdown
+    position: absolute
+    top: calc(100% + 10px)
+    right: 0
+    background: var(--background-muted)
+    border: 1px solid var(--border-light)
+    border-radius: 12px
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15)
+    padding: 15px
+    min-width: 200px
+    opacity: 0
+    visibility: hidden
+    transform: translateY(-10px)
+    transition: all 0.2s ease
+    z-index: 1000
+    &.open
+        opacity: 1
+        visibility: visible
+        transform: translateY(0)
+
+.theme-picker
+    list-style: none
+    margin: 0
+    padding: 0
+    display: flex
+    flex-direction: column
+    gap: 8px
+
+.theme-picker li
+    display: flex
+    align-items: center
+    gap: 12px
+    padding: 10px 12px
+    border-radius: 8px
+    cursor: pointer
+    transition: all 0.2s ease
+    border: 2px solid transparent
+    &:hover
+        background: var(--back-fill)
+    &.active
+        border-color: var(--accent)
+        background: var(--accent-transparent)
+    &:focus
+        outline: 2px solid var(--link-color)
+        outline-offset: 2px
+
+.theme-preview
+    width: 24px
+    height: 24px
+    border-radius: 50%
+    border: 2px solid var(--border-light)
+    flex-shrink: 0
+
+.theme-name
+    font-size: 14px
+    font-weight: 500
+    color: var(--base-font-color)
+
+button.theme-option
+    background: var(--background)
+    border: 1px solid var(--accent)
+    font-weight: 800
+
+.theme-list
+    margin-left: 0
+
+// Theme preview colors
+.theme-picker li
+    .theme-preview.theme-neon
+        background: linear-gradient(135deg, #03092b 0%, #38cbb9 50%, #f89697 100%)
+    .theme-preview.theme-dark
+        background: linear-gradient(135deg, #18181c 0%, #494f5c 50%, #fbc367 100%)
+    .theme-preview.theme-camel-sands
+        background: linear-gradient(135deg, #f5e4bc 0%, #ecc979 50%, #ff353f 100%)
+    .theme-preview.theme-corn-flower
+        background: linear-gradient(135deg, #f3fbfe 0%, #dfecf1 50%, #7754b0 100%)
+    .theme-preview.theme-chocolate-thunda
+        background: linear-gradient(135deg, #34252f 0%, #3b5249 50%, #519872 100%)
+    .theme-preview.theme-coffee
+        background: linear-gradient(135deg, #54311a 0%, #844f39 50%, #ffb079 100%)
+    .theme-preview.theme-summer
+        background: linear-gradient(135deg, #f6f7eb 0%, #dde3be 50%, #ff6392 100%)
+    .theme-preview.theme-blush
+        background: linear-gradient(135deg, #eddad1 0%, #edc8b7 50%, #ab3c61 100%)
+    .theme-preview.theme-blue
+        background: linear-gradient(135deg, #234e70 0%, #426682 50%, #fbbc55 100%)
+    .theme-preview.theme-ftl
+        background: linear-gradient(135deg, #01021E 0%, #00305b 50%, #0f89a7 100%)
+
+// Mobile responsiveness
+@media (max-width: 768px)
+    .theme-picker-container
+        margin-right: 10px
+    .theme-picker-dropdown
+        right: -10px
+        min-width: 180px
+        padding: 12px
+    .theme-picker li
+        padding: 8px 10px
+        gap: 10px
+    .theme-preview
+        width: 20px
+        height: 20px
+    .theme-name
+        font-size: 13px
