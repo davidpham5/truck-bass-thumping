@@ -183,7 +183,7 @@ if (typeof PlayerElement === "undefined") {
 						this.setAttribute("xp-playertype", null);
 						activate();
 					}, 3000);
-					/** 
+					/**
 					document.addEventListener("ytapi-ready", () => {
 						activate();
 						console.log('heard "ytapi-ready" event');
@@ -1028,6 +1028,16 @@ if (typeof PlayerElement === "undefined") {
 		// Playlist Management
 		addToPlaylist(mediaId, moveToTop, target) {
 			console.log("Add to playlist", mediaId, moveToTop);
+
+			// Check if song is already in playlist to prevent duplicates
+			if (!moveToTop && this.playlistManager.includes(mediaId)) {
+				console.log(
+					"Song already in playlist, skipping duplicate add",
+					mediaId
+				);
+				return;
+			}
+
 			if (moveToTop) {
 				// var oldItem = document.getElementById("playlist-item-" + mediaId);
 				var oldItem = false;
@@ -1072,7 +1082,6 @@ if (typeof PlayerElement === "undefined") {
 			}
 			htmx.process(this.playlistqueue);
 		}
-
 		setPlaylistPlaying(mediaId) {
 			console.log(
 				"Process song object to currently playing",
@@ -1142,9 +1151,9 @@ if (typeof PlayerElement === "undefined") {
 			if (!this.songDataStore.hasOwnProperty(mediaObj.mediaId)) {
 				window.xplayer.songDataStore[mediaObj.mediaId] = mediaObj;
 			}
-			this.playing = mediaObj.mediaId;
+			// Add to playlist without triggering handlePlayingChange
+			this.addToPlaylist(mediaObj.mediaId);
 		}
-
 		get played() {
 			return this.internalPlayed;
 		}

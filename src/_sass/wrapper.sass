@@ -134,11 +134,13 @@
         padding: 25px
         border-radius: 12px
         background: var(--card-background)
+        color: var(--background-muted)
         border: 1px solid var(--border-light)
         box-shadow: 0 2px 8px rgba(0,0,0,0.08)
         grid-column: span 1
         grid-row: span 1
         transition: all 0.2s ease
+        font-weight: 600
         &:hover
             box-shadow: 0 4px 12px rgba(0,0,0,0.12)
             transform: translateY(-2px)
@@ -147,10 +149,15 @@
             font-family: var(--serif)
             font-weight: 600
             margin-bottom: 0.5em
-            color: var(--base-font-color)
+            color: var(--background-muted)
         .search-field-name
             font-style: italic
             color: var(--base-font-color-light)
         .post-result-album-title
             font-weight: 600
-            color: var(--base-font-color)
+            color: var(--background-muted)
+.search
+    display: flex
+    .lo
+        display: flex
+        flex: 1 1 100%
