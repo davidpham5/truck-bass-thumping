@@ -43,9 +43,11 @@ module.exports = async function (data, zones) {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="preload" as="style" href="/assets/fraunces/fraunces.css" />
+		<link rel="preload" as="style" href="/assets/fonts/fonts.css" />
 		<title>${data.title || data.site.title}</title>
 		<meta name="description" content="${meta_description}" />
 		<link href="/assets/fraunces/fraunces.css" rel="stylesheet" hx-preserve="true" media="print" onload="this.media='all'">
+		<link href="/assets/fonts/fonts.css" rel="stylesheet" hx-preserve="true" media="print" onload="this.media='all'">
 		<link rel="preconnect" href="https://www.youtube.com" hx-preserve="true">
 		<link rel="dns-prefetch" href="https://www.youtube.com" hx-preserve="true">
 		<link rel="preconnect" href="https://open.spotify.com" hx-preserve="true">

@@ -23,6 +23,8 @@
         margin-bottom: 0.5em
         font-weight: 600
         font-family: var(--serif)
+        &.p-name
+            margin-top: 0
     h4
         font-size: 1.25em
         margin-top: 1em
@@ -83,7 +85,8 @@
             grid-auto-rows: minmax(100px, auto)
             max-width: 600px
             margin: 0 auto
-            background: var(--card-background)
+            background: var(--foreground-muted)
+
             padding: 20px
             border-radius: 12px
             align-content: center
@@ -109,12 +112,13 @@
                 font-size: 24px
                 font-weight: 600
                 font-family: var(--serif)
+                color: var(--background)
                 span
                     font-size: 28px
                     font-weight: 700
-                    color: var(--base-font-color)
+                    color: var(--background)
                 a, a:hover, a:visited
-                    text-decoration-color: var(--accent)
+                    text-decoration-color: var(--accent-muted)
 .player-type
     height: 50px
 
