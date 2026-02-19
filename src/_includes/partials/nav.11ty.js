@@ -25,6 +25,7 @@ module.exports = function (data) {
 	<h1 class="site-name">${linkmaker(data, "", data.site.title, "site-name")}</h1>
 		<div id="nav-menu-items"><ul>
 			<li>${linkmaker(data, "/songs/", "Songs")}</li>
+			<li>${linkmaker(data, "/engine/", "🎵 My Next Engine")}</li>
 			<li>${linkmaker(data, "/search/", "Search")}</li>
 			<li>${linkmaker(data, "/song-tags/", "Tags")}</li>
 			<li>${linkmaker(data, "/how-to-scrobble/", "Scrobble This Site")}</li>

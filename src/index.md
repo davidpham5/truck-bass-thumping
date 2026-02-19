@@ -5,11 +5,15 @@ path: /
 layout: "index.11ty.js"
 ---
 
-Welcome to <span class="site-name">Truck Bass Thumping</span>. This is an attempt to create audio playlists that you all have been organizing your music life around into a song discovery engine. I call it This is My Next Engine.
+Welcome to <span class="site-name">Truck Bass Thumping</span>. This is an attempt to create audio playlists that you all have been organizing your music life around into a song discovery engine. I call it **This Is My Next Engine**.
 
-The idea is pretty simple. Liberate your Spotify playlists in the form exporting them and combine your favorite friend's own playlists into an on-device LLM-powered song recommendation. Can a on-device LLM find similar charcateristics in songs from your friends' playlists and recommend your next song to listen to? This site is an experiment to find out.
+The idea is pretty simple. Liberate your Spotify playlists by exporting them and combine your favorite friend's own playlists into an on-device song recommendation engine. Can we find similar characteristics in songs from your friends' playlists and recommend your next song to listen to? This site is an experiment to find out.
 
-A key principle is that this site treats your data in a way that is interoparable with other services. Can playlists be a data type? can it be shared between services? Can I export my data and use it elsewhere? Can I import data from other services? This site is an experiment to find out.
+A key principle is that this site treats your data in a way that is interoperable with other services. Can playlists be a data type? Can it be shared between services? Can I export my data and use it elsewhere? Can I import data from other services? This site is an experiment to find out.
+
+### [🎵 Try This Is My Next Engine](/engine/)
+
+Import your Spotify playlist and get personalized song recommendations based on the curated music collection on this site - your "friend's playlist"!
 
 ## Select your preferred player
 
