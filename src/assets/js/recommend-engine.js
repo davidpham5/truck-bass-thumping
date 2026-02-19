@@ -259,7 +259,8 @@
             scoredSongs.sort((a, b) => b.score - a.score);
             
             // Apply trust level - higher trust = more adventurous recommendations
-            const numRecommendations = Math.min(10 + this.trustLevel, scoredSongs.length);
+            const BASE_RECOMMENDATION_COUNT = 10;
+            const numRecommendations = Math.min(BASE_RECOMMENDATION_COUNT + this.trustLevel, scoredSongs.length);
             this.recommendations = scoredSongs.slice(0, numRecommendations);
 
             // Filter out songs already in user's playlist
@@ -467,16 +468,20 @@
             
             // Check artist matches
             (song.artists || []).forEach(artist => {
-                if (userFeatures.artists.has(artist.toLowerCase())) {
-                    reasons.push(`You like ${artist}`);
+                if (!artist) return;
+                const artistName = String(artist.name || artist);
+                if (userFeatures.artists.has(artistName.toLowerCase())) {
+                    reasons.push(`You like ${artistName}`);
                 }
             });
 
             // Check tag matches (top 3)
             let tagMatches = 0;
             (song.tags || []).forEach(tag => {
-                if (tagMatches < 3 && userFeatures.tags.has(tag.toLowerCase())) {
-                    reasons.push(tag);
+                if (!tag) return;
+                const tagStr = String(tag);
+                if (tagMatches < 3 && userFeatures.tags.has(tagStr.toLowerCase())) {
+                    reasons.push(tagStr);
                     tagMatches++;
                 }
             });
