@@ -34,6 +34,7 @@ module.exports = async function (data) {
 			<div class="engine-intro">
 				${data.content}
 			</div>
+			<script src="/assets/js/ollama-wrapper.js" defer></script>
 			<script src="/assets/js/recommend-engine.js" defer></script>
 		`,
 	};

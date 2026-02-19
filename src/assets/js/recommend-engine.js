@@ -1,7 +1,7 @@
 /**
  * This Is My Next Engine - Song Recommendation System
  * Compares user's Spotify playlist with friend's playlist (site songs)
- * and provides recommendations using similarity analysis
+ * and provides recommendations using similarity analysis or LLM
  */
 
 (function() {
@@ -13,6 +13,8 @@
             this.friendsPlaylist = window.friendsPlaylist || [];
             this.recommendations = [];
             this.trustLevel = 7;
+            this.useLLM = false;
+            this.ollamaConnected = false;
             
             this.init();
         }
@@ -27,8 +29,103 @@
                     this.trustLevel = parseInt(e.target.value, 10);
                 });
             }
+
+            // Set up LLM mode toggle
+            this.setupLLMToggle();
             
             console.log(`This Is My Next Engine initialized with ${this.friendsPlaylist.length} songs from friend's playlist`);
+        }
+
+        /**
+         * Set up LLM mode toggle and settings
+         */
+        setupLLMToggle() {
+            const llmToggle = document.getElementById('llm-mode-toggle');
+            const llmSettings = document.getElementById('llm-settings');
+            
+            if (llmToggle) {
+                llmToggle.addEventListener('change', async (e) => {
+                    this.useLLM = e.target.checked;
+                    
+                    if (llmSettings) {
+                        llmSettings.classList.toggle('hidden', !this.useLLM);
+                    }
+                    
+                    if (this.useLLM) {
+                        await this.checkOllamaConnection();
+                    }
+                });
+            }
+
+            // Set up Ollama settings form
+            const ollamaForm = document.getElementById('ollama-settings-form');
+            if (ollamaForm) {
+                ollamaForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.updateOllamaSettings();
+                });
+            }
+
+            // Set up test connection button
+            const testBtn = document.getElementById('test-ollama-btn');
+            if (testBtn) {
+                testBtn.addEventListener('click', () => this.checkOllamaConnection());
+            }
+        }
+
+        /**
+         * Check Ollama connection and update UI
+         */
+        async checkOllamaConnection() {
+            const statusEl = document.getElementById('ollama-status');
+            const modelSelect = document.getElementById('ollama-model');
+            
+            if (statusEl) {
+                statusEl.innerHTML = '<span class="status-checking">Checking connection...</span>';
+            }
+
+            if (window.ollamaWrapper) {
+                const result = await window.ollamaWrapper.checkConnection();
+                
+                if (result.connected) {
+                    this.ollamaConnected = true;
+                    if (statusEl) {
+                        statusEl.innerHTML = '<span class="status-connected">✓ Connected to Ollama</span>';
+                    }
+                    
+                    // Populate model dropdown
+                    if (modelSelect && result.models) {
+                        modelSelect.innerHTML = result.models.map(m => 
+                            `<option value="${m.name}" ${m.name === window.ollamaWrapper.model ? 'selected' : ''}>${m.name}</option>`
+                        ).join('');
+                    }
+                } else {
+                    this.ollamaConnected = false;
+                    if (statusEl) {
+                        statusEl.innerHTML = `<span class="status-error">✗ ${result.error}</span>`;
+                    }
+                }
+            } else {
+                if (statusEl) {
+                    statusEl.innerHTML = '<span class="status-error">✗ Ollama wrapper not loaded</span>';
+                }
+            }
+        }
+
+        /**
+         * Update Ollama settings
+         */
+        updateOllamaSettings() {
+            const urlInput = document.getElementById('ollama-url');
+            const modelSelect = document.getElementById('ollama-model');
+            
+            if (window.ollamaWrapper) {
+                window.ollamaWrapper.updateSettings(
+                    urlInput?.value,
+                    modelSelect?.value
+                );
+                this.checkOllamaConnection();
+            }
         }
 
         /**
@@ -235,6 +332,18 @@
          * Main comparison and recommendation function
          */
         async compareAndRecommend() {
+            // Check if LLM mode is enabled
+            if (this.useLLM) {
+                await this.compareWithLLM();
+            } else {
+                await this.compareWithAlgorithm();
+            }
+        }
+
+        /**
+         * Algorithm-based recommendation (original method)
+         */
+        async compareWithAlgorithm() {
             this.showLoading('Analyzing your music taste...');
             
             // Small delay for UI feedback
@@ -268,6 +377,59 @@
 
             this.hideLoading();
             this.displayRecommendations(userFeatures);
+        }
+
+        /**
+         * LLM-based recommendation using Ollama
+         */
+        async compareWithLLM() {
+            if (!window.ollamaWrapper) {
+                this.showError('Ollama wrapper not available. Please refresh the page.');
+                return;
+            }
+
+            if (!this.ollamaConnected) {
+                const check = await window.ollamaWrapper.checkConnection();
+                if (!check.connected) {
+                    this.showError(`Cannot connect to Ollama: ${check.error}`);
+                    return;
+                }
+                this.ollamaConnected = true;
+            }
+
+            this.showLoading('🤖 Connecting to AI...');
+            await this.delay(500);
+
+            this.updateLoadingMessage('🤖 AI is analyzing your music taste...');
+
+            try {
+                // Get LLM recommendations
+                const llmRecommendations = await window.ollamaWrapper.generateRecommendations(
+                    this.userPlaylist,
+                    this.friendsPlaylist,
+                    this.trustLevel
+                );
+
+                if (llmRecommendations.length === 0) {
+                    // Fall back to algorithm if LLM fails
+                    this.showError('AI could not generate recommendations. Using algorithm mode instead.');
+                    await this.delay(1000);
+                    await this.compareWithAlgorithm();
+                    return;
+                }
+
+                this.recommendations = this.filterAlreadyOwned(llmRecommendations);
+                
+                // Extract features for display purposes
+                const userFeatures = this.extractPlaylistFeatures(this.userPlaylist);
+                
+                this.hideLoading();
+                this.displayRecommendations(userFeatures, true); // true = LLM mode
+            } catch (error) {
+                console.error('LLM recommendation error:', error);
+                this.hideLoading();
+                this.showError(`AI error: ${error.message}. Try using the algorithm mode instead.`);
+            }
         }
 
         /**
@@ -386,7 +548,7 @@
         /**
          * Display recommendations
          */
-        displayRecommendations(userFeatures) {
+        displayRecommendations(userFeatures, isLLMMode = false) {
             const section = document.getElementById('results-section');
             const explanationDiv = document.getElementById('recommendation-explanation');
             const listDiv = document.getElementById('recommendations-list');
@@ -397,9 +559,11 @@
             const topTags = userFeatures.tagList.slice(0, 5).map(t => t.name);
             const topArtists = userFeatures.artistList.slice(0, 3).map(a => a.name);
 
+            const modeLabel = isLLMMode ? '🤖 AI-Powered Recommendations' : '🎵 Algorithm-Based Recommendations';
+            
             explanationDiv.innerHTML = `
-                <div class="explanation-box">
-                    <h4>🎵 Based on your music taste:</h4>
+                <div class="explanation-box ${isLLMMode ? 'llm-mode' : ''}">
+                    <h4>${modeLabel}</h4>
                     <p>
                         ${topTags.length > 0 ? `<strong>Genres you love:</strong> ${topTags.join(', ')}<br>` : ''}
                         ${topArtists.length > 0 ? `<strong>Artists you listen to:</strong> ${topArtists.join(', ')}<br>` : ''}
@@ -418,7 +582,7 @@
             } else {
                 listDiv.innerHTML = `
                     <div class="recommendations-grid">
-                        ${this.recommendations.map((song, index) => this.renderRecommendationCard(song, index, userFeatures)).join('')}
+                        ${this.recommendations.map((song, index) => this.renderRecommendationCard(song, index, userFeatures, isLLMMode)).join('')}
                     </div>
                 `;
             }
@@ -430,13 +594,16 @@
         /**
          * Render a single recommendation card
          */
-        renderRecommendationCard(song, index, userFeatures) {
-            const matchReasons = this.getMatchReasons(song, userFeatures);
+        renderRecommendationCard(song, index, userFeatures, isLLMMode = false) {
+            const matchReasons = isLLMMode && song.llmReason 
+                ? [song.llmReason]
+                : this.getMatchReasons(song, userFeatures);
             const imageUrl = song.featuredImage ? `/img/${song.featuredImage}` : '/img/glass-horn.jpg';
             
             return `
-                <div class="recommendation-card" style="--delay: ${index * 0.1}s">
+                <div class="recommendation-card ${isLLMMode ? 'llm-recommended' : ''}" style="--delay: ${index * 0.1}s">
                     <div class="card-rank">#${index + 1}</div>
+                    ${isLLMMode ? '<div class="ai-badge">🤖 AI Pick</div>' : ''}
                     <div class="card-image">
                         <img src="${imageUrl}" alt="Album art for ${this.escapeHtml(song.songtitle || song.title)}" loading="lazy" />
                     </div>

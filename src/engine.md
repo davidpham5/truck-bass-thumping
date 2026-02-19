@@ -12,7 +12,7 @@ Welcome to **This Is My Next Engine** - a song recommendation engine that compar
 ## How It Works
 
 1. **Import Your Playlist** - Paste your Spotify playlist URL or import directly
-2. **Compare** - We analyze the musical characteristics, tags, and artists
+2. **Choose Your Mode** - Use our algorithm or let AI (via Ollama) analyze your taste
 3. **Discover** - Get personalized recommendations based on what your friend loves
 
 The songs on this site serve as your "friend's playlist" - a curated collection of musical obsessions. By comparing your listening habits with this collection, the engine identifies songs you're likely to enjoy.
@@ -42,8 +42,51 @@ The songs on this site serve as your "friend's playlist" - a curated collection 
   </div>
 
   <div id="comparison-section" class="hidden">
-    <h3>Step 2: Compare Playlists</h3>
-    <p>Your playlist has been loaded. Click below to find your musical matches!</p>
+    <h3>Step 2: Configure & Compare</h3>
+    <p>Your playlist has been loaded. Choose your recommendation mode:</p>
+    
+    <div class="mode-selector">
+      <div class="mode-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="llm-mode-toggle" />
+          <span class="toggle-slider"></span>
+          <span class="toggle-text">🤖 Use AI (Ollama) for recommendations</span>
+        </label>
+      </div>
+      
+      <div id="llm-settings" class="hidden">
+        <div class="llm-settings-box">
+          <h4>🔧 Ollama Settings</h4>
+          <div id="ollama-status" class="ollama-status">
+            <span class="status-unchecked">Click "Test Connection" to check</span>
+          </div>
+          <form id="ollama-settings-form">
+            <div class="form-group">
+              <label for="ollama-url">Ollama URL:</label>
+              <input type="text" id="ollama-url" value="http://localhost:11434" placeholder="http://localhost:11434" />
+            </div>
+            <div class="form-group">
+              <label for="ollama-model">Model:</label>
+              <select id="ollama-model">
+                <option value="llama3.2">llama3.2 (default)</option>
+                <option value="llama3.1">llama3.1</option>
+                <option value="mistral">mistral</option>
+                <option value="phi3">phi3</option>
+              </select>
+            </div>
+            <div class="form-actions">
+              <button type="button" id="test-ollama-btn">Test Connection</button>
+              <button type="submit">Save Settings</button>
+            </div>
+          </form>
+          <p class="llm-note">
+            <strong>Note:</strong> You need <a href="https://ollama.ai" target="_blank" rel="noopener">Ollama</a> running locally.
+            Run <code>ollama serve</code> to start, then <code>ollama pull llama3.2</code> to get the model.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <div class="trust-slider">
       <label for="trust-level">How much do you trust your friend's taste?</label>
       <input type="range" id="trust-level" min="1" max="10" value="7" />

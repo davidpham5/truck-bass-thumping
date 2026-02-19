@@ -416,3 +416,158 @@ button,
     .action-btn
       width: 100%
       text-align: center
+
+// LLM Mode Styles
+.mode-selector
+  margin-bottom: 1.5rem
+
+.mode-toggle
+  margin-bottom: 1rem
+
+.toggle-label
+  display: flex
+  align-items: center
+  gap: 0.75rem
+  cursor: pointer
+
+  input[type="checkbox"]
+    display: none
+
+  .toggle-slider
+    position: relative
+    width: 50px
+    height: 26px
+    background: #ccc
+    border-radius: 13px
+    transition: background 0.3s
+
+    &::before
+      content: ""
+      position: absolute
+      width: 20px
+      height: 20px
+      background: white
+      border-radius: 50%
+      top: 3px
+      left: 3px
+      transition: transform 0.3s
+
+  input:checked + .toggle-slider
+    background: var(--accent-color, #4a90d9)
+
+    &::before
+      transform: translateX(24px)
+
+  .toggle-text
+    font-weight: 500
+
+// LLM Settings Box
+.llm-settings-box
+  background: var(--info-bg, #f0f7ff)
+  border: 1px solid var(--accent-color, #4a90d9)
+  border-radius: 8px
+  padding: 1.25rem
+  margin-top: 1rem
+
+  h4
+    margin: 0 0 1rem
+    color: var(--heading-color, #1a1a2e)
+
+.ollama-status
+  margin-bottom: 1rem
+  padding: 0.5rem 0.75rem
+  border-radius: 4px
+  font-size: 0.9rem
+
+  .status-unchecked
+    color: var(--muted-text, #666)
+
+  .status-checking
+    color: #f59e0b
+
+  .status-connected
+    color: #10b981
+    font-weight: 600
+
+  .status-error
+    color: #dc2626
+
+.form-group
+  margin-bottom: 1rem
+
+  label
+    display: block
+    font-weight: 600
+    margin-bottom: 0.5rem
+    font-size: 0.9rem
+
+  input[type="text"],
+  select
+    width: 100%
+    padding: 0.5rem 0.75rem
+    border: 1px solid var(--input-border, #ddd)
+    border-radius: 6px
+    font-size: 0.9rem
+    font-family: inherit
+
+    &:focus
+      outline: none
+      border-color: var(--accent-color, #4a90d9)
+
+.form-actions
+  display: flex
+  gap: 0.75rem
+  flex-wrap: wrap
+
+  button
+    padding: 0.5rem 1rem
+    font-size: 0.9rem
+
+.llm-note
+  margin: 1rem 0 0
+  padding: 0.75rem
+  background: rgba(255, 255, 255, 0.5)
+  border-radius: 4px
+  font-size: 0.85rem
+  color: var(--muted-text, #666)
+
+  code
+    background: rgba(0, 0, 0, 0.1)
+    padding: 0.1rem 0.4rem
+    border-radius: 3px
+    font-family: monospace
+
+// LLM Mode Cards
+.explanation-box.llm-mode
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+  color: white
+
+  h4
+    color: white
+
+  strong
+    color: #e0e7ff
+
+.recommendation-card.llm-recommended
+  border: 2px solid var(--accent-color, #4a90d9)
+  position: relative
+
+.ai-badge
+  position: absolute
+  top: 0.5rem
+  right: 0.5rem
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+  color: white
+  font-size: 0.7rem
+  padding: 0.25rem 0.5rem
+  border-radius: 4px
+  font-weight: 600
+  z-index: 1
+
+// Responsive for LLM settings
+@media (max-width: 600px)
+  .form-actions
+    flex-direction: column
+
+    button
+      width: 100%
